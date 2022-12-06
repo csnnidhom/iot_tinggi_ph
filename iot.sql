@@ -11,11 +11,41 @@
  Target Server Version : 100420
  File Encoding         : 65001
 
- Date: 06/12/2022 01:54:06
+ Date: 07/12/2022 00:17:13
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for ph
+-- ----------------------------
+DROP TABLE IF EXISTS `ph`;
+CREATE TABLE `ph`  (
+  `data` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `tanggal` date NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ph
+-- ----------------------------
+INSERT INTO `ph` VALUES ('2', '2022-12-06');
+INSERT INTO `ph` VALUES ('8', '2022-12-28');
+
+-- ----------------------------
+-- Table structure for sensor_ph
+-- ----------------------------
+DROP TABLE IF EXISTS `sensor_ph`;
+CREATE TABLE `sensor_ph`  (
+  `data_sensor` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `tanggal_sensor` date NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sensor_ph
+-- ----------------------------
+INSERT INTO `sensor_ph` VALUES ('3', '2022-12-06');
+INSERT INTO `sensor_ph` VALUES ('8', '2022-12-28');
 
 -- ----------------------------
 -- Table structure for sensor_tinggi
@@ -29,20 +59,20 @@ CREATE TABLE `sensor_tinggi`  (
 -- ----------------------------
 -- Records of sensor_tinggi
 -- ----------------------------
-INSERT INTO `sensor_tinggi` VALUES (6, '2022-12-15');
-INSERT INTO `sensor_tinggi` VALUES (5, '2022-12-16');
-INSERT INTO `sensor_tinggi` VALUES (2, '2022-12-17');
-INSERT INTO `sensor_tinggi` VALUES (7, '2022-12-18');
-INSERT INTO `sensor_tinggi` VALUES (8, '2022-12-19');
-INSERT INTO `sensor_tinggi` VALUES (1, '2022-12-20');
-INSERT INTO `sensor_tinggi` VALUES (2, '2022-12-21');
-INSERT INTO `sensor_tinggi` VALUES (2, '2022-12-22');
-INSERT INTO `sensor_tinggi` VALUES (6, '2022-12-23');
-INSERT INTO `sensor_tinggi` VALUES (8, '2022-12-24');
-INSERT INTO `sensor_tinggi` VALUES (1, '2022-12-25');
-INSERT INTO `sensor_tinggi` VALUES (3, '2022-12-26');
-INSERT INTO `sensor_tinggi` VALUES (9, '2022-12-27');
-INSERT INTO `sensor_tinggi` VALUES (2, '2022-12-28');
+INSERT INTO `sensor_tinggi` VALUES (25, '2022-12-01');
+INSERT INTO `sensor_tinggi` VALUES (30, '2022-12-02');
+INSERT INTO `sensor_tinggi` VALUES (35, '2022-12-03');
+INSERT INTO `sensor_tinggi` VALUES (40, '2022-12-04');
+INSERT INTO `sensor_tinggi` VALUES (32, '2022-12-05');
+INSERT INTO `sensor_tinggi` VALUES (49, '2022-12-06');
+INSERT INTO `sensor_tinggi` VALUES (51, '2022-12-07');
+INSERT INTO `sensor_tinggi` VALUES (40, '2022-12-08');
+INSERT INTO `sensor_tinggi` VALUES (37, '2022-12-09');
+INSERT INTO `sensor_tinggi` VALUES (42, '2022-12-10');
+INSERT INTO `sensor_tinggi` VALUES (55, '2022-12-11');
+INSERT INTO `sensor_tinggi` VALUES (28, '2022-12-12');
+INSERT INTO `sensor_tinggi` VALUES (49, '2022-12-13');
+INSERT INTO `sensor_tinggi` VALUES (55, '2022-12-14');
 
 -- ----------------------------
 -- Table structure for tinggi
@@ -70,7 +100,7 @@ CREATE TABLE `tinggi`  (
 -- ----------------------------
 -- Records of tinggi
 -- ----------------------------
-INSERT INTO `tinggi` VALUES ('1', '3', '2022-12-22', '2', '2022-12-23', '1', '2022-12-24', '7', '2022-12-25', '5', '2022-12-26', '4', '2022-12-27', '3', '2022-12-28');
+INSERT INTO `tinggi` VALUES ('1', '30', '2022-12-08', '39', '2022-12-09', '40', '2022-12-10', '25', '2022-12-11', '45', '2022-12-12', '47', '2022-12-13', '55', '2022-12-14');
 
 -- ----------------------------
 -- Table structure for tinggi2
@@ -84,20 +114,20 @@ CREATE TABLE `tinggi2`  (
 -- ----------------------------
 -- Records of tinggi2
 -- ----------------------------
-INSERT INTO `tinggi2` VALUES ('1', '2022-12-15');
-INSERT INTO `tinggi2` VALUES ('2', '2022-12-16');
-INSERT INTO `tinggi2` VALUES ('3', '2022-12-17');
-INSERT INTO `tinggi2` VALUES ('4', '2022-12-18');
-INSERT INTO `tinggi2` VALUES ('5', '2022-12-19');
-INSERT INTO `tinggi2` VALUES ('6', '2022-12-20');
-INSERT INTO `tinggi2` VALUES ('7', '2022-12-21');
-INSERT INTO `tinggi2` VALUES ('3', '2022-12-22');
-INSERT INTO `tinggi2` VALUES ('2', '2022-12-23');
-INSERT INTO `tinggi2` VALUES ('1', '2022-12-24');
-INSERT INTO `tinggi2` VALUES ('7', '2022-12-25');
-INSERT INTO `tinggi2` VALUES ('5', '2022-12-26');
-INSERT INTO `tinggi2` VALUES ('4', '2022-12-27');
-INSERT INTO `tinggi2` VALUES ('3', '2022-12-28');
+INSERT INTO `tinggi2` VALUES ('21', '2022-12-01');
+INSERT INTO `tinggi2` VALUES ('25', '2022-12-02');
+INSERT INTO `tinggi2` VALUES ('30', '2022-12-03');
+INSERT INTO `tinggi2` VALUES ('34', '2022-12-04');
+INSERT INTO `tinggi2` VALUES ('41', '2022-12-05');
+INSERT INTO `tinggi2` VALUES ('45', '2022-12-06');
+INSERT INTO `tinggi2` VALUES ('50', '2022-12-07');
+INSERT INTO `tinggi2` VALUES ('30', '2022-12-08');
+INSERT INTO `tinggi2` VALUES ('39', '2022-12-09');
+INSERT INTO `tinggi2` VALUES ('40', '2022-12-10');
+INSERT INTO `tinggi2` VALUES ('25', '2022-12-11');
+INSERT INTO `tinggi2` VALUES ('45', '2022-12-12');
+INSERT INTO `tinggi2` VALUES ('47', '2022-12-13');
+INSERT INTO `tinggi2` VALUES ('55', '2022-12-14');
 
 -- ----------------------------
 -- Table structure for user

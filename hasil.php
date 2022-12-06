@@ -56,18 +56,66 @@ while($row = mysqli_fetch_array($tinggi_real)){
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="row justify-content-center">
-                        <div class="col-9 pt-4">
+                        <div class="col-9 pt-4 mb-4">
                             <div class="bg-light rounded h-100 p-4 ">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h6 class="mb-0">Sensor Tinggi</h6>
                                     </div>
-                                    <canvas id="myChart"></canvas>
+                                    <canvas id="grafik_hasil"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="bg-light text-center rounded p-4 pt-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Tabel Sensor PH</h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0 text-center">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th scope="col">No</th>
+                                        <th scope="col">Data Inputan</th>
+                                        <th scope="col">Data Sensor PH</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">Hasil Perbandingan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        include 'config.php';
+                                        $no=1;
+                                        $tabel_ph = mysqli_query($kon,"select * from ph inner join sensor_ph on ph.tanggal=sensor_ph.tanggal_sensor");
+                                        while($row = mysqli_fetch_array($tabel_ph))
+                                        {
+                                            $data_input = $row['data'];
+                                            $data_sensor = $row['data_sensor'];
+                                            $tanggal = $row['tanggal_sensor'];
+
+                                            if($data_input == $data_sensor){
+                                                $perbandingan = 'Data Sesuai';
+                                            } else {
+                                                $perbandingan = 'Data Tidak Sesuai';
+                                            }
+
+                                            echo "<tr>
+                                            <td>".$no++."</td>
+                                            <td>".$data_input."</td>
+                                            <td>".$data_sensor."</td>
+                                            <td>".date("d F Y",strtotime($tanggal))."</td>
+                                            <td>".$perbandingan."</td>
+                                            </tr>";
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>`
+                    </div>
+
                 </div>
             </div>
+
         </div>
         <!-- Content End -->
 
@@ -81,18 +129,18 @@ while($row = mysqli_fetch_array($tinggi_real)){
     ?>
 
     <script>
-        var ctx1 = $("#myChart").get(0).getContext("2d");
+        var ctx1 = $("#grafik_hasil").get(0).getContext("2d");
             var myChart1 = new Chart(ctx1, {
                 type: "bar",
                 data: {
                     labels:[
-                            <?php echo json_encode($tanggal1); ?>, 
-                            <?php echo json_encode($tanggal2); ?>,
-                            <?php echo json_encode($tanggal3); ?>,
-                            <?php echo json_encode($tanggal4); ?>,
-                            <?php echo json_encode($tanggal5); ?>,
-                            <?php echo json_encode($tanggal6); ?>,
-                            <?php echo json_encode($tanggal7); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal1))); ?>, 
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal2))); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal3))); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal4))); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal5))); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal6))); ?>,
+                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal7))); ?>,
                         ],
                     datasets: [{
                             label: "Data Tinggi Real",

@@ -110,45 +110,18 @@ include 'header.php'
                             </div>
                         </div>
                         <div class="col-sm-5 col-xl-5">
-                            <div class="bg-light rounded h-100 p-4 ">
+                            <div class="bg-light rounded p-4 ">
                                 <label class="form-label">Input PH</label>
-                                <form method="POST" action="proses_simpan_tinggi.php">
+                                <form method="POST" action="proses_simpan_ph.php">
                                     <div class="input-group ">
-                                        <span class="input-group-text">Hari-1</span>
-                                        <input type="text" name="data1" class="form-control">
-                                        <input type="date" name="tanggal1" style="width:100px;" class="form-control">
+                                        <span class="input-group-text">Data &nbsp; &nbsp; &nbsp; </span>
+                                        <input type="text" name="data" class="form-control">
                                     </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-2</span>
-                                        <input type="text" name="data2" class="form-control">
-                                        <input type="date" name="tanggal2" style="width:100px;" class="form-control">
+                                    <div class="input-group pt-4">
+                                        <span class="input-group-text">Tanggal</span>
+                                        <input type="date" name="tanggal" class="form-control">
                                     </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-3</span>
-                                        <input type="text" name="data3" class="form-control">
-                                        <input type="date" name="tanggal3" style="width:100px;" class="form-control">
-                                    </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-4</span>
-                                        <input type="text" name="data4" class="form-control">
-                                        <input type="date" name="tanggal4" style="width:100px;" class="form-control">
-                                    </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-5</span>
-                                        <input type="text" name="data5" class="form-control">
-                                        <input type="date" name="tanggal5" style="width:100px;" class="form-control">
-                                    </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-6</span>
-                                        <input type="text" name="data6" class="form-control">
-                                        <input type="date" name="tanggal6" style="width:100px;" class="form-control">
-                                    </div>
-                                    <div class="input-group pt-2">
-                                        <span class="input-group-text">Hari-7</span>
-                                        <input type="text" name="data7" class="form-control">
-                                        <input type="date" name="tanggal7" style="width:100px;" class="form-control">
-                                    </div>
-                                    <div class="input-group mb-3">
+                                    <div class="input-group pt-4">
                                         <button class="btn btn-primary w-100 m-2" type="submit" name="submit">Simpan</button>
                                     </div>
                                 </form>
