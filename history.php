@@ -12,16 +12,6 @@ $page="history";
 <?php
 include 'header.php';
 include "config.php";
-
-$query="SELECT * FROM tinggi2 inner join sensor_tinggi on tinggi2.tanggal_history=sensor_tinggi.tanggal";
-$tinggi_real = mysqli_query($kon,$query);
-while($row = mysqli_fetch_array($tinggi_real)){
-    $data_history_tinggi[] = $row['data_history'];
-    $tanggal_history_tinggi[] = $row['tanggal_history'];
-    $data_sensor_tinggi[] = $row['data'];
-
-}
-
 ?>
 
 <body>
@@ -57,14 +47,54 @@ while($row = mysqli_fetch_array($tinggi_real)){
                             <div class="bg-light rounded h-100 p-4 ">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h6 class="mb-0">Sensor Tinggi</h6>
-                                    </div>
+                                        <div>
+                                            <form action="" method="get">
+                                                <div class="form-group">
+                                                    <h6 class="mb-0">Pilih Bulan :</h6>
+                                                        <div class="input-group mb-3">
+                                                            <select name="bulan" class="form-control">
+                                                            <option value="">Pilih</option>
+                                                            <option value="01">Januari</option>
+                                                            <option value="02">Februari</option>
+                                                            <option value="03">Maret</option>
+                                                            <option value="04">April</option>
+                                                            <option value="05">Mei</option>
+                                                            <option value="06">Juni</option>
+                                                            <option value="07">Juli</option>
+                                                            <option value="08">Agustus</option>
+                                                            <option value="09">September</option>
+                                                            <option value="10">Oktober</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">Desember</option>
+                                                            </select>
+                                                            <button type="submit" name="submit" class="btn btn-primary">Submit</button> 
+                                                        </div>
+                                                    
+                                                </div>
+                                            </form>
+                                            <?php
+                                                if(isset($_GET['submit'])){
+                                                    $nama_bulan = array('', 'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+                                                    $bulan = $_GET['bulan'];
+                                                    $query="SELECT * FROM tinggi2 left join sensor_tinggi on tinggi2.tanggal_history=sensor_tinggi.tanggal WHERE MONTH(tinggi2.tanggal_history)='$bulan' ";
+                                                    $tinggi_real = mysqli_query($kon,$query);
+                                                    while($row = mysqli_fetch_array($tinggi_real)){
+                                                        $data_history_tinggi[] = $row['data_history'];
+                                                        $tanggal_history_tinggi[] = $row['tanggal_history'];
+                                                        $data_sensor_tinggi[] = $row['data'];
+                                                    }
+                                                    echo '<b>'.$nama_bulan[$_GET['bulan']].'</b>';
+                                                }
+                                                ?>
+                                        </div>
+                                </div>
                                     <canvas id="grafik_history"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-light text-center rounded p-4 pt-4">
+                    <div class="bg-light text-center rounded p-4 pt-4 mb-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h6 class="mb-0">Tabel Sensor PH</h6>
                         </div>
@@ -132,12 +162,29 @@ while($row = mysqli_fetch_array($tinggi_real)){
                     labels:<?php echo json_encode($tanggal_history_tinggi); ?>,
                     datasets: [{
                             label: "Data Tinggi Real",
-                            data: <?php echo json_encode($data_history_tinggi); ?>,
+                            data: 
+                            <?php 
+                            // $query="SELECT * FROM tinggi2 right join sensor_tinggi on tinggi2.tanggal_history=sensor_tinggi.tanggal ";
+                            // $tinggi_real = mysqli_query($kon,$query);
+                            //     while($row = mysqli_fetch_array($tinggi_real)){
+                            //         $data_history_tinggi[] = $row['data_history'];
+                            //     }
+                            
+                                echo json_encode($data_history_tinggi); 
+                            ?>,
                             backgroundColor: "rgba(0, 156, 255, .5)"
                         },
                         {
                             label: "Data Tinggi Sensor",
-                            data: <?php echo json_encode($data_sensor_tinggi); ?>,
+                            data: 
+                            <?php 
+                            // $query="SELECT * FROM sensor_tinggi right join tinggi2 on sensor_tinggi.tanggal=tinggi2.tanggal_history";
+                            // $tinggi_real = mysqli_query($kon,$query);
+                            // while($row = mysqli_fetch_array($tinggi_real)){
+                            //     $data_sensor_tinggi[] = $row['data'];
+                            // }
+                            echo json_encode($data_sensor_tinggi); 
+                            ?>,
                             backgroundColor: "rgba(0, 156, 255, .3)"
                         },
                     ]

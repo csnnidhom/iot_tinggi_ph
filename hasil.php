@@ -19,9 +19,6 @@ while($row = mysqli_fetch_array($tinggi_real)){
     $tanggal2 = $row['tanggal2'];
     $tanggal3 = $row['tanggal3'];
     $tanggal4 = $row['tanggal4'];
-    $tanggal5 = $row['tanggal5'];
-    $tanggal6 = $row['tanggal6'];
-    $tanggal7 = $row['tanggal7'];
 }
  
 
@@ -67,7 +64,7 @@ while($row = mysqli_fetch_array($tinggi_real)){
                         </div>
                     </div>
 
-                    <div class="bg-light text-center rounded p-4 pt-4">
+                    <div class="bg-light text-center rounded p-4 pt-4 mb-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h6 class="mb-0">Tabel Sensor PH</h6>
                         </div>
@@ -138,9 +135,6 @@ while($row = mysqli_fetch_array($tinggi_real)){
                             <?php echo json_encode(date("d-m-Y",strtotime($tanggal2))); ?>,
                             <?php echo json_encode(date("d-m-Y",strtotime($tanggal3))); ?>,
                             <?php echo json_encode(date("d-m-Y",strtotime($tanggal4))); ?>,
-                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal5))); ?>,
-                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal6))); ?>,
-                            <?php echo json_encode(date("d-m-Y",strtotime($tanggal7))); ?>,
                         ],
                     datasets: [{
                             label: "Data Tinggi Real",
@@ -173,27 +167,6 @@ while($row = mysqli_fetch_array($tinggi_real)){
                                         }
                                         echo json_encode($data_real); 
                                     ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT * FROM tinggi");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_real = $row['data5'];
-                                        }
-                                        echo json_encode($data_real); 
-                                    ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT * FROM tinggi");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_real = $row['data6'];
-                                        }
-                                        echo json_encode($data_real); 
-                                    ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT * FROM tinggi");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_real = $row['data7'];
-                                        }
-                                        echo json_encode($data_real); 
-                                    ?>,
                                 ],
                             backgroundColor: "rgba(0, 156, 255, .5)"
                         },
@@ -202,7 +175,7 @@ while($row = mysqli_fetch_array($tinggi_real)){
                             data: [
                                     <?php
                                         $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal1");
+                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal1");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
@@ -210,7 +183,7 @@ while($row = mysqli_fetch_array($tinggi_real)){
                                     ?>,
                                     <?php
                                         $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal2");
+                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal2");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
@@ -218,7 +191,7 @@ while($row = mysqli_fetch_array($tinggi_real)){
                                     ?>,
                                     <?php
                                         $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal3");
+                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal3");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
@@ -226,31 +199,7 @@ while($row = mysqli_fetch_array($tinggi_real)){
                                     ?>,
                                     <?php
                                         $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal4");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_sensor = $row['data'];
-                                        }
-                                        echo json_encode($data_sensor); 
-                                    ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal5");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_sensor = $row['data'];
-                                        }
-                                        echo json_encode($data_sensor); 
-                                    ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal6");
-                                        while($row = mysqli_fetch_array($query)){
-                                            $data_sensor = $row['data'];
-                                        }
-                                        echo json_encode($data_sensor); 
-                                    ?>,
-                                    <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        INNER JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal7");
+                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal4");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }

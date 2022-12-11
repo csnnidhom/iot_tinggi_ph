@@ -9,14 +9,8 @@ $data3 = $_POST["data3"];
 $tanggal3 = $_POST["tanggal3"];
 $data4 = $_POST["data4"];
 $tanggal4 = $_POST["tanggal4"];
-$data5 = $_POST["data5"];
-$tanggal5 = $_POST["tanggal5"];
-$data6 = $_POST["data6"];
-$tanggal6 = $_POST["tanggal6"];
-$data7 = $_POST["data7"];
-$tanggal7 = $_POST["tanggal7"];
-$sql1="REPLACE into tinggi values (1, '$data1','$tanggal1','$data2','$tanggal2','$data3','$tanggal3', '$data4', '$tanggal4','$data5','$tanggal5','$data6','$tanggal6','$data7', '$tanggal7')";
-$sql2 ="INSERT into tinggi2 values ('$data1', '$tanggal1'),('$data2', '$tanggal2'),('$data3', '$tanggal3'),('$data4', '$tanggal4'),('$data5', '$tanggal5'),('$data6', '$tanggal6'),('$data7', '$tanggal7')";
+$sql1="REPLACE into tinggi values (1, '$data1','$tanggal1','$data2','$tanggal2','$data3','$tanggal3', '$data4', '$tanggal4')";
+$sql2 ="INSERT into tinggi2 values ('$data1', '$tanggal1'),('$data2', '$tanggal2'),('$data3', '$tanggal3'),('$data4', '$tanggal4')";
 mysqli_query($kon,$sql1);
 mysqli_query($kon,$sql2);
 
