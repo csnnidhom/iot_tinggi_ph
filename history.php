@@ -76,7 +76,7 @@ include "config.php";
                                                 if(isset($_GET['submit'])){
                                                     $nama_bulan = array('', 'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
                                                     $bulan = $_GET['bulan'];
-                                                    $query="SELECT * FROM tinggi2 left join sensor_tinggi on tinggi2.tanggal_history=sensor_tinggi.tanggal WHERE MONTH(tinggi2.tanggal_history)='$bulan' ";
+                                                    $query="SELECT * FROM tinggi2 left join sensor_tinggi on tinggi2.tanggal_history=DATE(sensor_tinggi.waktu) WHERE MONTH(tinggi2.tanggal_history)='$bulan' ";
                                                     $tinggi_real = mysqli_query($kon,$query);
                                                     while($row = mysqli_fetch_array($tinggi_real)){
                                                         $data_history_tinggi[] = $row['data_history'];
@@ -113,12 +113,12 @@ include "config.php";
                                     <?php
                                         include 'config.php';
                                         $no=1;
-                                        $tabel_ph = mysqli_query($kon,"select * from ph inner join sensor_ph on ph.tanggal=sensor_ph.tanggal_sensor");
+                                        $tabel_ph = mysqli_query($kon,"select * from ph inner join sensor_ph on ph.tanggal=DATE(sensor_ph.waktu)");
                                         while($row = mysqli_fetch_array($tabel_ph))
                                         {
-                                            $data_input = $row['data'];
-                                            $data_sensor = $row['data_sensor'];
-                                            $tanggal = $row['tanggal_sensor'];
+                                            $data_input = $row['data_input'];
+                                            $data_sensor = $row['data'];
+                                            $tanggal = $row['waktu'];
 
                                             if($data_input == $data_sensor){
                                                 $perbandingan = 'Data Sesuai';

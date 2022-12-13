@@ -89,7 +89,7 @@ include 'header.php'
                                 <form method="POST" action="proses_simpan_ph.php">
                                     <div class="input-group ">
                                         <span class="input-group-text">Data &nbsp; &nbsp; &nbsp; </span>
-                                        <input type="text" name="data" class="form-control">
+                                        <input type="text" name="data_input" class="form-control">
                                     </div>
                                     <div class="input-group pt-4">
                                         <span class="input-group-text">Tanggal</span>

@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$data = $_POST['data'];
+$data = $_POST['data_input'];
 $tanggal = $_POST['tanggal'];
 $query = "INSERT into ph values ('$data','$tanggal')";
 $hasil = mysqli_query($kon, $query);

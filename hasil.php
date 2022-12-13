@@ -83,12 +83,12 @@ while($row = mysqli_fetch_array($tinggi_real)){
                                     <?php
                                         include 'config.php';
                                         $no=1;
-                                        $tabel_ph = mysqli_query($kon,"select * from ph inner join sensor_ph on ph.tanggal=sensor_ph.tanggal_sensor");
+                                        $tabel_ph = mysqli_query($kon,"select * from ph inner join sensor_ph on ph.tanggal=DATE(sensor_ph.waktu)");
                                         while($row = mysqli_fetch_array($tabel_ph))
                                         {
-                                            $data_input = $row['data'];
-                                            $data_sensor = $row['data_sensor'];
-                                            $tanggal = $row['tanggal_sensor'];
+                                            $data_input = $row['data_input'];
+                                            $data_sensor = $row['data'];
+                                            $tanggal = $row['waktu'];
 
                                             if($data_input == $data_sensor){
                                                 $perbandingan = 'Data Sesuai';
@@ -174,32 +174,32 @@ while($row = mysqli_fetch_array($tinggi_real)){
                             label: "Data Tinggi Sensor",
                             data: [
                                     <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal1");
+                                        $query = mysqli_query($kon,"SELECT data from sensor_tinggi
+                                        RIGHT JOIN tinggi ON tinggi.tanggal1=DATE(sensor_tinggi.waktu)");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
                                         echo json_encode($data_sensor); 
                                     ?>,
                                     <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal2");
+                                        $query = mysqli_query($kon,"SELECT data from sensor_tinggi
+                                        RIGHT JOIN tinggi ON tinggi.tanggal2=DATE(sensor_tinggi.waktu)");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
                                         echo json_encode($data_sensor); 
                                     ?>,
                                     <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal3");
+                                        $query = mysqli_query($kon,"SELECT data from sensor_tinggi
+                                        RIGHT JOIN tinggi ON tinggi.tanggal3=DATE(sensor_tinggi.waktu)");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }
                                         echo json_encode($data_sensor); 
                                     ?>,
                                     <?php
-                                        $query = mysqli_query($kon,"SELECT data, tanggal from sensor_tinggi
-                                        RIGHT JOIN tinggi ON sensor_tinggi.tanggal=tinggi.tanggal4");
+                                        $query = mysqli_query($kon,"SELECT data from sensor_tinggi
+                                        RIGHT JOIN tinggi ON tinggi.tanggal4=DATE(sensor_tinggi.waktu)");
                                         while($row = mysqli_fetch_array($query)){
                                             $data_sensor = $row['data'];
                                         }

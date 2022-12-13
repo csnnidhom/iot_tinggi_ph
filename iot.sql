@@ -11,7 +11,7 @@
  Target Server Version : 100420
  File Encoding         : 65001
 
- Date: 07/12/2022 00:17:13
+ Date: 13/12/2022 18:59:55
 */
 
 SET NAMES utf8mb4;
@@ -22,57 +22,55 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `ph`;
 CREATE TABLE `ph`  (
-  `data` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `data_input` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `tanggal` date NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ph
 -- ----------------------------
-INSERT INTO `ph` VALUES ('2', '2022-12-06');
-INSERT INTO `ph` VALUES ('8', '2022-12-28');
+INSERT INTO `ph` VALUES ('2', '2022-11-01');
+INSERT INTO `ph` VALUES ('99', '2022-12-13');
 
 -- ----------------------------
 -- Table structure for sensor_ph
 -- ----------------------------
 DROP TABLE IF EXISTS `sensor_ph`;
 CREATE TABLE `sensor_ph`  (
-  `data_sensor` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tanggal_sensor` date NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `data` int NULL DEFAULT NULL,
+  `waktu` timestamp NULL DEFAULT current_timestamp,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sensor_ph
 -- ----------------------------
-INSERT INTO `sensor_ph` VALUES ('3', '2022-12-06');
-INSERT INTO `sensor_ph` VALUES ('8', '2022-12-28');
+INSERT INTO `sensor_ph` VALUES (1, 97, '2022-11-01 22:01:24');
+INSERT INTO `sensor_ph` VALUES (2, 70, '2022-12-13 16:50:03');
 
 -- ----------------------------
 -- Table structure for sensor_tinggi
 -- ----------------------------
 DROP TABLE IF EXISTS `sensor_tinggi`;
 CREATE TABLE `sensor_tinggi`  (
+  `id` int NOT NULL AUTO_INCREMENT,
   `data` int NULL DEFAULT NULL,
-  `tanggal` date NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  `waktu` timestamp NULL DEFAULT current_timestamp,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sensor_tinggi
 -- ----------------------------
-INSERT INTO `sensor_tinggi` VALUES (25, '2022-12-01');
-INSERT INTO `sensor_tinggi` VALUES (30, '2022-12-02');
-INSERT INTO `sensor_tinggi` VALUES (35, '2022-12-03');
-INSERT INTO `sensor_tinggi` VALUES (40, '2022-12-04');
-INSERT INTO `sensor_tinggi` VALUES (32, '2022-12-05');
-INSERT INTO `sensor_tinggi` VALUES (49, '2022-12-06');
-INSERT INTO `sensor_tinggi` VALUES (51, '2022-12-07');
-INSERT INTO `sensor_tinggi` VALUES (40, '2022-12-08');
-INSERT INTO `sensor_tinggi` VALUES (37, '2022-12-09');
-INSERT INTO `sensor_tinggi` VALUES (42, '2022-12-10');
-INSERT INTO `sensor_tinggi` VALUES (55, '2022-12-11');
-INSERT INTO `sensor_tinggi` VALUES (28, '2022-12-12');
-INSERT INTO `sensor_tinggi` VALUES (49, '2022-12-13');
-INSERT INTO `sensor_tinggi` VALUES (55, '2022-12-14');
+INSERT INTO `sensor_tinggi` VALUES (1, 97, '2022-11-01 22:01:24');
+INSERT INTO `sensor_tinggi` VALUES (2, 97, '2022-11-02 22:02:11');
+INSERT INTO `sensor_tinggi` VALUES (3, 92, '2022-11-03 22:02:24');
+INSERT INTO `sensor_tinggi` VALUES (4, 95, '2022-11-04 09:38:52');
+INSERT INTO `sensor_tinggi` VALUES (5, 80, '2022-12-01 16:52:52');
+INSERT INTO `sensor_tinggi` VALUES (6, 70, '2022-12-02 16:53:02');
+INSERT INTO `sensor_tinggi` VALUES (7, 60, '2022-12-03 16:53:11');
+INSERT INTO `sensor_tinggi` VALUES (8, 50, '2022-12-04 16:53:21');
 
 -- ----------------------------
 -- Table structure for tinggi
@@ -88,19 +86,13 @@ CREATE TABLE `tinggi`  (
   `tanggal3` date NULL DEFAULT NULL,
   `data4` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `tanggal4` date NULL DEFAULT NULL,
-  `data5` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tanggal5` date NULL DEFAULT NULL,
-  `data6` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tanggal6` date NULL DEFAULT NULL,
-  `data7` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tanggal7` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tinggi
 -- ----------------------------
-INSERT INTO `tinggi` VALUES ('1', '30', '2022-12-08', '39', '2022-12-09', '40', '2022-12-10', '25', '2022-12-11', '45', '2022-12-12', '47', '2022-12-13', '55', '2022-12-14');
+INSERT INTO `tinggi` VALUES ('1', '60', '2022-11-01', '83', '2022-11-02', '77', '2022-11-03', '90', '2022-11-04');
 
 -- ----------------------------
 -- Table structure for tinggi2
@@ -114,20 +106,14 @@ CREATE TABLE `tinggi2`  (
 -- ----------------------------
 -- Records of tinggi2
 -- ----------------------------
-INSERT INTO `tinggi2` VALUES ('21', '2022-12-01');
-INSERT INTO `tinggi2` VALUES ('25', '2022-12-02');
-INSERT INTO `tinggi2` VALUES ('30', '2022-12-03');
-INSERT INTO `tinggi2` VALUES ('34', '2022-12-04');
-INSERT INTO `tinggi2` VALUES ('41', '2022-12-05');
-INSERT INTO `tinggi2` VALUES ('45', '2022-12-06');
-INSERT INTO `tinggi2` VALUES ('50', '2022-12-07');
-INSERT INTO `tinggi2` VALUES ('30', '2022-12-08');
-INSERT INTO `tinggi2` VALUES ('39', '2022-12-09');
-INSERT INTO `tinggi2` VALUES ('40', '2022-12-10');
-INSERT INTO `tinggi2` VALUES ('25', '2022-12-11');
-INSERT INTO `tinggi2` VALUES ('45', '2022-12-12');
-INSERT INTO `tinggi2` VALUES ('47', '2022-12-13');
-INSERT INTO `tinggi2` VALUES ('55', '2022-12-14');
+INSERT INTO `tinggi2` VALUES ('70', '2022-11-01');
+INSERT INTO `tinggi2` VALUES ('65', '2022-11-02');
+INSERT INTO `tinggi2` VALUES ('75', '2022-11-03');
+INSERT INTO `tinggi2` VALUES ('80', '2022-11-04');
+INSERT INTO `tinggi2` VALUES ('80', '2022-12-01');
+INSERT INTO `tinggi2` VALUES ('70', '2022-12-02');
+INSERT INTO `tinggi2` VALUES ('60', '2022-12-03');
+INSERT INTO `tinggi2` VALUES ('50', '2022-12-04');
 
 -- ----------------------------
 -- Table structure for user
